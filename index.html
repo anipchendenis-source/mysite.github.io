@@ -24,9 +24,67 @@
 
     <div class="container">
         <div class="hero" id="home">
-            <h2>Добро пожаловать в мир приключений!</h2>
-            <p>Откройте для себя самые красивые места на планете</p>
-            <a href="destinations.html" class="btn">Начать путешествие</a>
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <span class="live-dot"></span>
+                    Сейчас просматривают маршруты ещё 18 путешественников
+                </div>
+                <h2>Соберите путешествие мечты за пару минут</h2>
+                <p>Мы анализируем популярные направления и цены в реальном времени, чтобы вы получили лучшее предложение ещё до звонка менеджеру.</p>
+                <ul class="hero-benefits">
+                    <li><span>1</span>Выберите направление и даты</li>
+                    <li><span>2</span>Получите персональный маршрут</li>
+                    <li><span>3</span>Сравните отели и перелёты на одной странице</li>
+                </ul>
+                <div class="hero-tags">
+                    <button class="hero-tag" data-destination="Мальдивы">#море</button>
+                    <button class="hero-tag" data-destination="Швейцария">#горы</button>
+                    <button class="hero-tag" data-destination="Италия">#история</button>
+                    <button class="hero-tag" data-destination="Индонезия">#йога</button>
+                </div>
+            </div>
+            <form class="trip-form" aria-label="Подбор путешествия">
+                <h3>Подберите маршрут</h3>
+                <p>Укажите параметры — мы пришлём подборку на указанную почту.</p>
+                <div class="form-row">
+                    <label>
+                        Направление
+                        <select id="trip-destination">
+                            <option value="Мальдивы">Мальдивы</option>
+                            <option value="Альпы">Альпы</option>
+                            <option value="Рим">Рим</option>
+                            <option value="Бали">Бали</option>
+                        </select>
+                    </label>
+                    <label>
+                        Дата вылета
+                        <input type="date" id="trip-date">
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        Длительность
+                        <select id="trip-duration">
+                            <option value="5 ночей">5 ночей</option>
+                            <option value="7 ночей">7 ночей</option>
+                            <option value="10 ночей">10 ночей</option>
+                            <option value="14 ночей">14 ночей</option>
+                        </select>
+                    </label>
+                    <label>
+                        Путешественники
+                        <select id="trip-guests">
+                            <option value="2 взрослых">2 взрослых</option>
+                            <option value="2 взрослых + ребёнок">2 взрослых + ребёнок</option>
+                            <option value="компания друзей">Компания друзей</option>
+                        </select>
+                    </label>
+                </div>
+                <button type="submit" class="btn">Получить подборку</button>
+                <div class="plan-result" aria-live="polite">
+                    Мы уже подобрали 327 маршрутов за последние 24 часа.
+                </div>
+            </form>
         </div>
 
         <section>
@@ -47,6 +105,65 @@
                     <h3>Индивидуальный подход</h3>
                     <p>Каждое путешествие планируется с учетом ваших пожеланий и предпочтений. Ваш отдых - наш приоритет.</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="featured-routes">
+            <h2>Горящие направления</h2>
+            <p class="section-subtitle">Обновляем список каждые 6 часов, чтобы вы успели забронировать лучшие номера.</p>
+            <div class="cards">
+                <div class="card route-card">
+                    <h3>Мальдивы — маршрут «Бирюзовые лагуны»</h3>
+                    <p>Сочетание водных вилл и экскурсий на частные рифы. Идеально для тех, кто мечтает о полном digital detox.</p>
+                    <div class="route-meta">
+                        <span>7 ночей</span>
+                        <span>от 148 000 ₽</span>
+                    </div>
+                    <a class="btn" href="destinations.html">Смотреть детали</a>
+                </div>
+                <div class="card route-card">
+                    <h3>Альпы — маршрут «Белые вершины»</h3>
+                    <p>Горнолыжные курорты Швейцарии, спа-программы и дегустация местных сыров в один тур.</p>
+                    <div class="route-meta">
+                        <span>5 ночей</span>
+                        <span>от 115 000 ₽</span>
+                    </div>
+                    <a class="btn" href="destinations.html">Выбрать курорт</a>
+                </div>
+                <div class="card route-card">
+                    <h3>Исторический Рим</h3>
+                    <p>Маршрут с частными экскурсиями, гастро-турами и свободным временем для самостоятельных открытий.</p>
+                    <div class="route-meta">
+                        <span>4 ночи</span>
+                        <span>от 84 000 ₽</span>
+                    </div>
+                    <a class="btn" href="destinations.html">Построить план</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Путевые истории клиентов</h2>
+            <p class="section-subtitle">Честные заметки путешественников, которые помогут принять решение.</p>
+            <div class="story-grid">
+                <article class="story-card">
+                    <p class="hero-eyebrow">#семейный отдых</p>
+                    <h3>Как выбрать идеальный остров на Мальдивах?</h3>
+                    <p>Алина делится опытом семейного отдыха: где кормят детей, на каких островах спокойное море и сколько стоил приватный трансфер.</p>
+                    <a class="story-link" href="about.html">Читать заметку</a>
+                </article>
+                <article class="story-card">
+                    <p class="hero-eyebrow">#активные выходные</p>
+                    <h3>Горные вершины за 72 часа</h3>
+                    <p>Роман рассказал, как мы помогли организовать экспресс-поездку в Альпы с катанием, термами и дегустацией сыров.</p>
+                    <a class="story-link" href="destinations.html">Повторить маршрут</a>
+                </article>
+                <article class="story-card">
+                    <p class="hero-eyebrow">#город и гастрономия</p>
+                    <h3>Рим без толп туристов</h3>
+                    <p>Секретные адреса, поздние завтраки с видом на Колизей и советы, как избежать очередей в музеи.</p>
+                    <a class="story-link" href="contact.html">Заказать консультацию</a>
+                </article>
             </div>
         </section>
     </div>
@@ -72,11 +189,59 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s, transform 0.6s';
-            observer.observe(card);
+        document.querySelectorAll('.card, .story-card').forEach(block => {
+            block.style.opacity = '0';
+            block.style.transform = 'translateY(20px)';
+            block.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(block);
+        });
+
+        // Подбор путешествия
+        const tripForm = document.querySelector('.trip-form');
+        const destinationSelect = document.getElementById('trip-destination');
+        const dateInput = document.getElementById('trip-date');
+        const durationSelect = document.getElementById('trip-duration');
+        const guestsSelect = document.getElementById('trip-guests');
+        const planResult = document.querySelector('.plan-result');
+
+        const formatDate = (date) => date.toISOString().split('T')[0];
+
+        if (dateInput && !dateInput.value) {
+            const defaultDate = new Date();
+            defaultDate.setDate(defaultDate.getDate() + 30);
+            dateInput.value = formatDate(defaultDate);
+        }
+
+        const savedPlan = localStorage.getItem('travel-plan');
+        if (savedPlan && planResult) {
+            const { destination, date, duration } = JSON.parse(savedPlan);
+            planResult.textContent = `Последний запрос: ${destination}, вылет ${date}, программа на ${duration}. Мы уже готовим обновлённую подборку.`;
+        }
+
+        tripForm?.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const data = {
+                destination: destinationSelect.value,
+                date: dateInput.value,
+                duration: durationSelect.value,
+                guests: guestsSelect.value
+            };
+
+            localStorage.setItem('travel-plan', JSON.stringify(data));
+
+            if (planResult) {
+                planResult.textContent = `Готовим подборку: ${data.destination}, вылет ${data.date}, ${data.duration}, ${data.guests}. Менеджер пришлёт детали на вашу почту.`;
+            }
+        });
+
+        document.querySelectorAll('.hero-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                const destination = tag.dataset.destination;
+                destinationSelect.value = destination;
+                if (planResult) {
+                    planResult.textContent = `Вы выбрали ${destination}. Добавьте даты и мы предложим лучшие варианты!`;
+                }
+            });
         });
     </script>
 </body>
