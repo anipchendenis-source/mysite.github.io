@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Направления - Мир Путешествий</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+            background: #f0f0f0;
+        }
+
+        nav a.active {
+            color: #764ba2;
+            background: #f0f0f0;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #667eea;
+            margin: 3rem 0 2rem;
+        }
+
+        /* Destination Cards */
+        .destinations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .destination-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .destination-content {
+            padding: 2rem;
+        }
+
+        .destination-content h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .destination-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .destination-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .destination-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .destination-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .destination-features li {
+            color: #666;
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .destination-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .destinations {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌍 Мир Путешествий</h1>
+        <p>Откройте для себя новые горизонты</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="destinations.html" class="active">Направления</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Наши направления</h1>
+
+        <div class="category-filter">
+            <button class="filter-btn active" data-category="all">Все</button>
+            <button class="filter-btn" data-category="beach">Пляжи</button>
+            <button class="filter-btn" data-category="mountain">Горы</button>
+            <button class="filter-btn" data-category="city">Города</button>
+        </div>
+
+        <div class="destinations">
+            <div class="destination-card" data-category="beach">
+                <div class="destination-image">🏝️</div>
+                <div class="destination-content">
+                    <h3>Мальдивы</h3>
+                    <p>Райские острова с белоснежными пляжами, кристально чистой водой и роскошными курортами. Идеально для романтического отдыха и дайвинга.</p>
+                    <ul class="destination-features">
+                        <li>7 дней / 6 ночей</li>
+                        <li>Все включено</li>
+                        <li>Вилла на воде</li>
+                        <li>Трансфер</li>
+                    </ul>
+                    <div class="destination-info">
+                        <span class="destination-price">от 150,000 ₽</span>
+                        <a href="contact.html" class="btn">Забронировать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-card" data-category="mountain">
+                <div class="destination-image">🏔️</div>
+                <div class="destination-content">
+                    <h3>Альпы, Швейцария</h3>
+                    <p>Величественные горные вершины, живописные долины и чистейший воздух. Идеально для любителей активного отдыха и горнолыжного спорта.</p>
+                    <ul class="destination-features">
+                        <li>5 дней / 4 ночи</li>
+                        <li>Завтраки</li>
+                        <li>Горнолыжный курорт</li>
+                        <li>Экскурсии</li>
+                    </ul>
+                    <div class="destination-info">
+                        <span class="destination-price">от 120,000 ₽</span>
+                        <a href="contact.html" class="btn">Забронировать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-card" data-category="city">
+                <div class="destination-image">🏛️</div>
+                <div class="destination-content">
+                    <h3>Рим, Италия</h3>
+                    <p>Погрузитесь в историю и культуру Вечного города. Уникальная архитектура, музеи мирового уровня и неповторимая атмосфера.</p>
+                    <ul class="destination-features">
+                        <li>4 дня / 3 ночи</li>
+                        <li>Завтраки</li>
+                        <li>Центральный отель</li>
+                        <li>Обзорные экскурсии</li>
+                    </ul>
+                    <div class="destination-info">
+                        <span class="destination-price">от 80,000 ₽</span>
+                        <a href="contact.html" class="btn">Забронировать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-card" data-category="beach">
+                <div class="destination-image">🌴</div>
+                <div class="destination-content">
+                    <h3>Бали, Индонезия</h3>
+                    <p>Тропический рай с потрясающими пляжами, древними храмами и богатой культурой. Идеально для йоги, серфинга и релаксации.</p>
+                    <ul class="destination-features">
+                        <li>10 дней / 9 ночей</li>
+                        <li>Все включено</li>
+                        <li>Пляжный отель</li>
+                        <li>Экскурсии по острову</li>
+                    </ul>
+                    <div class="destination-info">
+                        <span class="destination-price">от 100,000 ₽</span>
+                        <a href="contact.html" class="btn">Забронировать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-card" data-category="mountain">
+                <div class="destination-image">⛰️</div>
+                <div class="destination-content">
+                    <h3>Непал, Эверест</h3>
+                    <p>Приключение для настоящих путешественников. Треккинг к базовому лагерю Эвереста, незабываемые виды и встреча с уникальной культурой.</p>
+                    <ul class="destination-features">
+                        <li>14 дней / 13 ночей</li>
+                        <li>Полный пансион</li>
+                        <li>Опытный гид</li>
+                        <li>Снаряжение включено</li>
+                    </ul>
+                    <div class="destination-info">
+                        <span class="destination-price">от 200,000 ₽</span>
+                        <a href="contact.html" class="btn">Забронировать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-card" data-category="city">
+                <div class="destination-image">🗼</div>
+                <div class="destination-content">
+                    <h3>Париж, Франция</h3>
+                    <p>Романтическая столица мира с Эйфелевой башней, Лувром и неповторимой атмосферой. Идеально для влюбленных пар.</p>
+                    <ul class="destination-features">
+                        <li>5 дней / 4 ночи</li>
+                        <li>Завтраки</li>
+                        <li>Отель в центре</li>
+                        <li>Музеи и экскурсии</li>
+                    </ul>
+                    <div class="destination-info">
+                        <span class="destination-price">от 90,000 ₽</span>
+                        <a href="contact.html" class="btn">Забронировать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Мир Путешествий. Все права защищены.</p>
+        <p style="margin-top: 1rem;">Свяжитесь с нами: travel@world.com | +7 (999) 123-45-67</p>
+    </footer>
+
+    <script>
+        // Фильтрация направлений
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const destinationCards = document.querySelectorAll('.destination-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Убираем активный класс со всех кнопок
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Добавляем активный класс на нажатую кнопку
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+
+                destinationCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Анимация появления карточек при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        destinationCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+
