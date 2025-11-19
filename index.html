@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мир Путешествий</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌍 Мир Путешествий</h1>
+        <p>Откройте для себя новые горизонты</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="destinations.html">Направления</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="hero" id="home">
+            <h2>Добро пожаловать в мир приключений!</h2>
+            <p>Откройте для себя самые красивые места на планете</p>
+            <a href="destinations.html" class="btn">Начать путешествие</a>
+        </div>
+
+        <section>
+            <h2>Почему выбирают нас?</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">✈️</div>
+                    <h3>Лучшие направления</h3>
+                    <p>Мы предлагаем уникальные маршруты по самым красивым местам мира. От тропических пляжей до заснеженных вершин.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏨</div>
+                    <h3>Комфортное размещение</h3>
+                    <p>Тщательно отобранные отели и гостиницы для вашего максимального комфорта и незабываемого отдыха.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Каждое путешествие планируется с учетом ваших пожеланий и предпочтений. Ваш отдых - наш приоритет.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Мир Путешествий. Все права защищены.</p>
+        <p style="margin-top: 1rem;">Свяжитесь с нами: travel@world.com | +7 (999) 123-45-67</p>
+    </footer>
+
+    <script>
+        // Анимация появления карточек при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
