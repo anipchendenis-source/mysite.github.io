@@ -14,12 +14,15 @@
     </header>
 
     <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="destinations.html">Направления</a></li>
-            <li><a href="contact.html">Контакты</a></li>
-        </ul>
+        <div class="nav-inner">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="destinations.html">Направления</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+            <a class="nav-cta" href="tel:+79991234567">Позвонить</a>
+        </div>
     </nav>
 
     <div class="container">
@@ -166,12 +169,79 @@
                 </article>
             </div>
         </section>
+
+        <section class="trust-section">
+            <div class="trust-header">
+                <h2>Нам доверяют путешественники и партнёры</h2>
+                <div class="trust-badges">
+                    <span class="trust-badge"><span>★ 4.9</span> рейтинг клиентов</span>
+                    <span class="trust-badge">15 лет на рынке</span>
+                    <span class="trust-badge">Сертификат ATOR</span>
+                </div>
+            </div>
+            <div class="trust-stats">
+                <div class="trust-stat">
+                    <strong>12 800+</strong>
+                    подтверждённых поездок
+                </div>
+                <div class="trust-stat">
+                    <strong>97%</strong>
+                    клиентов возвращаются
+                </div>
+                <div class="trust-stat">
+                    <strong>38</strong>
+                    надёжных партнёров
+                </div>
+                <div class="trust-stat">
+                    <strong>24/7</strong>
+                    поддержка на маршруте
+                </div>
+            </div>
+            <div class="trust-logos">
+                <span>Emirates</span>
+                <span>Turkish Airlines</span>
+                <span>Hilton</span>
+                <span>Four Seasons</span>
+                <span>Qatar Airways</span>
+            </div>
+            <div class="testimonial-grid">
+                <article class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p>«На всех этапах — от выбора номера до трансфера — команда была на связи. Чувствовали себя в безопасности, даже когда рейс перенесли».</p>
+                    <div class="testimonial-author">— Сергей и Ольга, путешествие на Бали</div>
+                </article>
+                <article class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p>«Помогли собрать корпоративный выезд в Альпы на 20 человек: перелёты, оборудование, страховки. Всё прозрачно и по договору».</p>
+                    <div class="testimonial-author">— компания «ТехНова», тимбилдинг в Швейцарии</div>
+                </article>
+                <article class="testimonial-card">
+                    <div class="testimonial-rating">★★★★☆</div>
+                    <p>«Отдельно спасибо за чат-канал с куратором, который ответил ночью, когда понадобилась медицинская помощь в Риме».</p>
+                    <div class="testimonial-author">— Екатерина, гастро-тур в Италии</div>
+                </article>
+            </div>
+        </section>
     </div>
 
     <footer>
         <p>&copy; 2024 Мир Путешествий. Все права защищены.</p>
         <p style="margin-top: 1rem;">Свяжитесь с нами: travel@world.com | +7 (999) 123-45-67</p>
     </footer>
+
+    <div class="contact-widget" aria-live="polite">
+        <div class="contact-widget-body">
+            <strong>Свяжитесь с куратором</strong>
+            <p>Ответим за 5 минут в рабочее время и подскажем статус бронирования.</p>
+            <div class="contact-widget-actions">
+                <a class="contact-widget-action whatsapp" href="https://wa.me/79991234567" target="_blank" rel="noopener">WhatsApp</a>
+                <a class="contact-widget-action telegram" href="https://t.me/travelsupport" target="_blank" rel="noopener">Telegram</a>
+                <a class="contact-widget-action phone" href="tel:+79991234567">Позвонить</a>
+            </div>
+            <small>Работаем Пн-Пт 09:00–20:00</small>
+        </div>
+        <button class="contact-widget-toggle" type="button">Связаться</button>
+    </div>
 
     <script>
         // Анимация появления карточек при прокрутке
@@ -242,6 +312,19 @@
                     planResult.textContent = `Вы выбрали ${destination}. Добавьте даты и мы предложим лучшие варианты!`;
                 }
             });
+        });
+
+        // Контактный виджет
+        const contactWidget = document.querySelector('.contact-widget');
+        const contactWidgetToggle = document.querySelector('.contact-widget-toggle');
+
+        contactWidgetToggle?.addEventListener('click', () => {
+            contactWidget?.classList.toggle('open');
+            if (contactWidget?.classList.contains('open')) {
+                contactWidgetToggle.textContent = 'Свернуть';
+            } else {
+                contactWidgetToggle.textContent = 'Связаться';
+            }
         });
     </script>
 </body>
